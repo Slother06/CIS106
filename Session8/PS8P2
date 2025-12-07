@@ -1,0 +1,34 @@
+# Car class
+class Car:
+    def __init__(self, make, model, sticker_price):
+        self.make = make
+        self.model = model
+        self.sticker_price = sticker_price
+
+    def discount_price(self):
+        return self.sticker_price * 0.90  # 10% discount
+
+# Sport class inherits from Car
+class Sport(Car):
+    def __init__(self, make, model, sticker_price, sport_wheels='N', sport_engine='N', sport_interior='N'):
+        super().__init__(make, model, sticker_price)
+        self.sport_wheels = sport_wheels
+        self.sport_engine = sport_engine
+        self.sport_interior = sport_interior
+
+    def price_with_options(self):
+        price = self.discount_price()  # start with discounted price
+        if self.sport_wheels.upper() == 'Y':
+            price += 1000
+        if self.sport_engine.upper() == 'Y':
+            price += 3000
+        if self.sport_interior.upper() == 'Y':
+            price += 2000
+        return price
+
+# Testing Car and Sport
+car1 = Car("Toyota", "Camry", 30000)
+sport_car1 = Sport("Ford", "Mustang", 40000, sport_wheels='Y', sport_engine='Y', sport_interior='N')
+
+print(f"{car1.make} {car1.model} - Discounted Price: ${car1.discount_price()}")
+print(f"{sport_car1.make} {sport_car1.model} - Price with Options: ${sport_car1.price_with_options()}")
