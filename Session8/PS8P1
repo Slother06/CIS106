@@ -1,0 +1,33 @@
+# Employee class
+class Employee:
+    def __init__(self, first_name, last_name, annual_salary):
+        self.first_name = first_name
+        self.last_name = last_name
+        self.annual_salary = annual_salary
+
+    def get_first_name(self):
+        return self.first_name
+
+    def get_last_name(self):
+        return self.last_name
+
+    def get_annual_salary(self):
+        return self.annual_salary
+
+    def bonus(self):
+        return self.annual_salary * 0.10  # 10% bonus
+
+# Manager class inherits from Employee
+class Manager(Employee):
+    def bonus(self):
+        return self.annual_salary * 0.20  # 20% bonus for managers
+
+    def long_term_bonus(self):
+        return self.annual_salary * 0.50  # 50% long term bonus
+
+# Testing Employee and Manager
+emp1 = Employee("John", "Doe", 50000)
+mgr1 = Manager("Jane", "Smith", 80000)
+
+print(f"{emp1.get_first_name()} {emp1.get_last_name()} - Salary: ${emp1.get_annual_salary()}, Bonus: ${emp1.bonus()}")
+print(f"{mgr1.get_first_name()} {mgr1.get_last_name()} - Salary: ${mgr1.get_annual_salary()}, Bonus: ${mgr1.bonus()}, Long Term Bonus: ${mgr1.long_term_bonus()}")
